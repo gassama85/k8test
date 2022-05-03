@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: httpd-rc
+  namespace: skyda-ns
+  labels:
+    author: skyda
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: httpd-pod
+      labels:
+        author: skyda
+    spec:
+      containers:
+        - name: myhttpd
+          image: httpd
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+...
